@@ -1,1 +1,20 @@
-linux
+ubuntu 20.04 apache install
+
+安裝apache
+sudo apt update
+sudo apt apache2
+
+驗證apache是否在執行
+sudo systemctl status apache2
+
+開啟HTTP(80),HTTPS(443)
+sudo ufw allow 'Apache Full'
+驗證更改
+sudo ufw status
+
+驗證apache安裝
+http://IP OR DOMAIN/
+
+檔案上傳到
+/var/www/html
+配置/etc/apache2/site-enabled/000-default.conf
