@@ -33,4 +33,4 @@ sudo vi /etc/shells
 最後一行加入
 /usr/sbin/nologin
 
-#ufw須設定開啟21portion 
+#ufw須設定開啟21port
