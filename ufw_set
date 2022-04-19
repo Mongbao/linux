@@ -1,1 +1,36 @@
 
+防火牆設定（UFW，預設未起用 Status:inactive)
+
+啟用：sudo ufw enable
+停用：sudo ufw disable
+
+設定UFW預設允許、拒絕所有連線
+允許：sudo ufw default allow
+拒絕：sudo ufw default deny
+
+通訊埠對應服務名稱
+所有服務名稱對應的port可查看/etc/services，設定UFW規則時可直接使用服務名稱即可
+查看ssh,http相關服務名稱的對應通訊埠：cat /etc/services | egrep '^ssh|^http'
+
+設定允許、拒絕規則
+
+特定port：sudo ufw allow 80
+         sudo ufw deny 80
+
+指定IP連線開放所有port：sudo ufw allow from 192.168.0.1
+                     sudo ufw deny from 192.168.0.1
+
+指定IP的特定port：sudo ufw allow from 192.168.0.1 to any port 80
+                sudo ufw deny from 192.168.0.1 to any port 80
+
+指定IP整個網域的特定port：sudo allow from 192.168.0.1/24 to any port 80
+                       sudo deny from 192.168.0.1/24 to any port 80
+
+查看UFW狀態：sudo ufw status
+查看UFW狀態（較多資訊）：sudo ufw status verbose
+
+刪除UFW規則：sudo ufw delete allow 80
+加使用序號：sudo ufw status numbered
+刪除序號2規則：sudo ufw delete 3
+重設UFW規則：sudo ufw reset
+
