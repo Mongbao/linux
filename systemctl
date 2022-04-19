@@ -1,1 +1,113 @@
+systemd基本服務管理
+在systemd中每個系統稱為一個服務單位（unit)，而服務單位又區分為
+service、socket、target、path、snapshot、timer等多種不同類型，
+可以從設定檔的副檔名來判斷該服務單位所屬的類型
+
+如果要管理systemd中的各種服務，可以使用systemctl指令
+systemctl 操作指令 服務名稱.service
+
+若要啟動系統服務，可以使用start操作指令
+sudo systemctl start ssh.service
+
+若要顯示指定的系統服務狀態，可以使用status操作指令
+systemctl status ssh.service
+
+若要停止指定的系統服務狀態，可以使用stop操作指令
+sudo systemctl stop ssh.service
+
+指定服務名稱時，可以將結尾的.service省略
+
+啟用、停用開機自動啟動服務
+設定開機自動啟動服務要改用enable與disable
+sudo systemctl enable ssh
+sudo systemctl disable ssh
+
+檢測系統服務狀態
+檢測是否正在運行
+systemctl is-active ssh.service
+檢測是否有設定開機自動啟動
+systemctl is-enabled ssh.service
+檢查服務是否啟動失敗
+systemctl is-failed ssh.service
+
+列出systemd所有服務
+systemctl list-units
+
+列出系統上所有服務（包含已啟動與為啟動）
+systemctl list-units --all
+
+列出所有未啟動服務
+systemctl list-units --all --state=inactive
+
+只列出系統上所有service類型的服務
+systemctl list-units --type=service
+
+服務內部設定與狀態
+systemctl cat atd.service
+
+# /usr/lib/systemd/system/atd.service
+[Unit]
+Description=Job spooling tools
+After=syslog.target systemd-user-sessions.service
+
+[Service]
+EnvironmentFile=/etc/sysconfig/atd
+ExecStart=/usr/sbin/atd -f $OPTS
+IgnoreSIGPIPE=no
+
+[Install]
+WantedBy=multi-user.target
+
+systemd會自動處理服務的相依性問題，查看特定服務的相依性
+systemctl list_dependencies sshd.service
+
+sshd.service
+● ├─sshd-keygen.service
+● ├─system.slice
+● └─basic.target
+●   ├─firewalld.service
+[略]
+
+查看特定服務的底層設定值
+systemctl show sshd.service
+
+Type=notify
+Restart=on-failure
+NotifyAccess=main
+RestartUSec=42s
+TimeoutStartUSec=1min 30s
+TimeoutStopUSec=1min 30s
+[略]
+
+查看特定的設定值
+systemctl show sshd.service -p MainPID
+
+遮蔽特定服務（服務被遮蔽後就無法啟動）
+sudo systemctl mask ssh.service
+
+恢復被遮蔽的服務
+sudo systemctl unmask ssh.service
+
+編輯服務設定
+sudo systemctl edit ssh.service
+執行指令後會開啟一個空白檔案，存檔離開後systemd會在/etc/systemd/system/目錄下建立一個服務名稱加上.d的檔案
+
+直接編輯完整的設定檔
+sudo systemctl edit --full ssh.service
+這樣的修改方式會直接把完整的設定寫入/etc/systemd/system/目錄底下，systemd會優先採用
+
+移除目前用edit修改的設定，直接刪除對應的.d目錄即可
+sudo rm -r /etc/systemd/system/ssh.service.d
+
+--full模式修改就需要刪除對應的設定檔，然後重新載入
+sudo rm /etc/systemd/system/ssh.service
+sudo systemctl daemon-reload
+
+
+
+
+
+
+
+
 
