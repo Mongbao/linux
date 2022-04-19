@@ -2,7 +2,7 @@ ubuntu 20.04 apache install
 
 安裝apache
 sudo apt update
-sudo apt apache2
+sudo apt install apache2
 
 驗證apache是否在執行
 sudo systemctl status apache2
