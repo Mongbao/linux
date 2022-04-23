@@ -1,0 +1,7 @@
+創建新使用者：adduser username
+創建群組：groupadd
+設定使用者密碼：passwd username
+刪除使用者密碼也能登陸：passwd -d username
+查詢使用者資訊：passwd -S username
+使用者改名：usermod -l oldusesrname newusername
+刪除使用者：userdel -r username
