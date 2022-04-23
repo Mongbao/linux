@@ -1,6 +1,13 @@
 安裝軟體：sudo apt-get install 軟體名稱
 切換到root權限：su
 
+關機：
+      shutdown -h now：現在立刻關機
+      shutdown -r now：線在立刻重啟
+      shutdown -r +3：三分鐘後重啟
+      shutdown -h +3 "shutdown after 3 minutes"：提示使用者三分鐘後關機
+      shutdown -r 20:00：八點重啟系統
+
 列出目前目錄文件：
       ls      (不包含隱藏文件）
       ls -a   (包含隱藏文件）
@@ -16,3 +23,19 @@
 移動檔案到別的資料夾：mv /home/bao/tmp/tmp.txt /home/bao/
 文件改名：mv tmp.txt tmp1.txt
 搜尋目錄或文件：find /home/bao -name "tmp"
+
+清理所有軟體暫存：sudo apt-get clean
+            (暫存位置：/var/cache/apt/archives目錄裡的.deb檔）
+刪除系統不再使用的軟體：sudo apt-get autoremove
+
+查看內核版本：uname -a
+查看ubuntu版本：cat /etc/issus
+查看usb設備：lsusb
+查看cpu資訊：cat /proc/cpuinfo
+查看硬體資訊：lshw
+查看磁盤資訊：sudo fdisk -l
+查看硬碟剩餘空間：df -h
+查看當前的記憶體使用狀況：free -m
+查看目前執行程式：ps -A
+結束執行程式：kill PID
+強制結束執行程式：kill -9 PID
