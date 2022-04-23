@@ -1,0 +1,18 @@
+安裝軟體：sudo apt-get install 軟體名稱
+切換到root權限：su
+
+列出目前目錄文件：
+      ls      (不包含隱藏文件）
+      ls -a   (包含隱藏文件）
+      ls -l   (列出文件詳細目錄）
+      
+回到目錄上一層：cd ..
+回到上一次所在的目錄：cd -
+回到目前使用者的跟目錄：cd ~
+創建一個目錄：mkdir tmp
+移除一個空目錄：rmdir tmp
+刪除一個文件或多個文件：rm index.html
+刪除不是空的目錄rm -rf tmp
+移動檔案到別的資料夾：mv /home/bao/tmp/tmp.txt /home/bao/
+文件改名：mv tmp.txt tmp1.txt
+搜尋目錄或文件：find /home/bao -name "tmp"
