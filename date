@@ -1,0 +1,8 @@
+date查看時間
+
+timedatectl:查看更多時間相關資訊
+
+timedatectl list-timezones:時區列表
+timedatectl list-timezones | grep Taipei:利用grep過濾條件
+
+sudo timedatectl set-timezone Asia/Taipei :更改時區
