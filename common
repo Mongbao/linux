@@ -49,6 +49,26 @@ find:查找檔案
 -type l //symbolic link(連結檔)
 -type p //FIFO(命令管道)
 -type s //socket
+
 根據名稱搜尋檔案或資料夾
 -name NAME 指定名稱; -iname NAME 名稱不分大小寫
-//尋找家目錄
+//尋找家目錄底下指定資料夾或檔案
+find ~ -name blog
+//尋找家目錄底下指定檔案
+find ~ -name blog -type f
+//尋找當前目錄底下包含特定字串資料夾
+find . -iname *blo* -type d
+
+根據大小或時間搜尋檔案或資料夾
+-size [ckMGTP]指定大小; -atime[time]指定時間; -amin[min]指定分鐘
+//尋找當前目錄底下大於2m的檔案
+find . -size +2M -type f
+//尋找當前目錄底下超過2天沒被修改或存取的資料夾
+find . -atime +2 -type d
+//尋找當前目錄底下40分鐘內有修改或存取過的檔案
+find . -amin -40 -type f
+
+根據檔案內容搜尋檔案
+-exec後面的command為執行的命令; grep -H將符合的檔案路徑列出; {}將取代為檔案名稱路徑; \代表exec參數結束
+//搜尋家目錄底下的php檔，並且內容包含test字串
+find ~ -name "*.php" -exec grep -H "test" {} \;
