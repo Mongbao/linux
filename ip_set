@@ -24,3 +24,27 @@ network:
     
     配置生效
     sudo netplan apply
+
+
+網路設定
+ifconfig:查詢系統網路卡狀況
+//可以查詢IP、子遮罩網路及網路卡的硬體等資訊
+
+route:查看網路封包傳送路由狀況
+
+netstat:查看網路連線狀況
+
+nslookup:查看或反查詢Domain相對應IP
+//查詢google伺服器IP
+nslookup www.google.com
+Server:192.168.1.1
+Address:192.168.1.1#53
+Non-authoritative answer:
+Name:	www.google.com
+Address: 142.251.42.228
+Name:	www.google.com
+Address: 2404:6800:4012:1::2004
+
+ping IP/DNS:查看目的Domain是否有網路封包回應
+ping www.google.com
+
