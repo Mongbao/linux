@@ -1,0 +1,13 @@
+/root:系統管理員根目錄，僅有root權限可以讀寫
+/boot:放linux系統啟動過程中需要的文件，例如kernal、引導程序Grub等
+/bin:binary，存放供所有用戶使用的完成基本維護任務的命令，例如:cat、ls、cp等
+/sbin:存放系統管理員可使用的文件，例如:硬碟驅動、鍵盤、滑鼠等
+/dev:devic，存放系統主要配置文件及應用軟體設定檔
+/etc:etcetera，存放系統主要配置文件及應用軟體設定檔
+/home:用戶的家目錄，儲存普通用戶個人文件，默認為/home/USERNAME
+/lib:存放系統函式庫及核心函式庫
+/opt:optional，第三方軟體放置處，例如:Acobe Reader、google-earth等
+/srv:service，網路服務啟動後所需數據存放處，例如:網站服務www
+/tmp:temperary，暫存檔存放處
+/usr:unix software resource，系統核心所在，包含所有共享文件
+/var:存放變數檔案，例如:系統log
