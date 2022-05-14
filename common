@@ -39,3 +39,16 @@
 查看目前執行程式：ps -A
 結束執行程式：kill PID
 強制結束執行程式：kill -9 PID
+
+find:查找檔案
+-type [搜尋類型] 參數介紹
+-type b //block special file(特殊設備檔案)
+-type c //character special file(特殊設備檔案)
+-type d //directory(資料夾)
+-type f //regular file(一般檔案)
+-type l //symbolic link(連結檔)
+-type p //FIFO(命令管道)
+-type s //socket
+根據名稱搜尋檔案或資料夾
+-name NAME 指定名稱; -iname NAME 名稱不分大小寫
+//尋找家目錄
